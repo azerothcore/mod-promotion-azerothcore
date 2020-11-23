@@ -486,7 +486,7 @@ public:
         uint32 pjts = fields[0].GetUInt32();
 
         ClearGossipMenuFor(player);
-        if (promotionEnable && (pjts <= promotionCount))
+        if (promotionEnable && ((int)pjts <= promotionCount))
         {
             if (action > GOSSIP_ACTION_INFO_DEF && action < 1020)
                 // Level
