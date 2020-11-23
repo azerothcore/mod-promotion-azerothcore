@@ -53,8 +53,10 @@ public:
         if (player->getLevel() != 1)
         {
             if (player && creature)
+            {
                 SendGossipMenuFor(player, 68, creature);
-                return true;
+            }
+            return true;
         }
 
         switch (player->getClass())
