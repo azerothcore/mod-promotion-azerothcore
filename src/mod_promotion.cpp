@@ -478,7 +478,7 @@ public:
         player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_RANGED", 38360)), true);
     }
 
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
     {
         uint32 accountID = player->GetSession()->GetAccountId();
         QueryResult result = CharacterDatabase.PQuery("SELECT COUNT(`guid`) FROM `characters` WHERE `account`=%u", accountID);
