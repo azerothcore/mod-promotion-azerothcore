@@ -1,6 +1,10 @@
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
+
 ## Promotion - Module template
-- Latest build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-promotion-AzerothCore-/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-promotion-AzerothCore-)
+
+- Latest build status with azerothcore:
+
+[![Build Status](https://github.com/azerothcore/mod-promotion-AzerothCore-/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-promotion-AzerothCore-)
 
 [English](README.md) | [Español](README_ES.md)
 
@@ -22,13 +26,11 @@ This module allows the player to give you a promotion that consists of the follo
 * Level 78 armor
 * Mount 1
 
-
 ## Requirements
 
 My module requires:
 
-- AzerothCore 
-
+- AzerothCore
 
 ## Installation
 
@@ -47,4 +49,3 @@ If you need to change the module configuration, go to your server configuration 
 * [Asmadeuxx](https://github.com/Asmadeuxx) (module author) Edit the link to point to your github if you wish.
 
 AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org/) - [discord chat community](https://discord.gg/PaqQRkd)
-

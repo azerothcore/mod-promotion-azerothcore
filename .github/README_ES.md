@@ -6,18 +6,19 @@ Permite Al Owner, Editar Si Permite La Promocion, La Armadura Que Quiera Sin Nec
 
 -------------------------------------------------------
 
-# Modulo De Promocion (AzerothCore)
+# Modulo De Promoción (AzerothCore)
 
 ## Descripción
 
 Este módulo permite hacer esto y esto.
+
 Este Modulo Permite al jugador darle una promocion que consta de lo siguiente.
+
 * 1 Personaje Level 90 Por Cuenta
 * 4 Mochilas 
 * 2,500G De Oro
 * Armadura de Nivel 78
 * Una Montura
-
 
 ## Cómo utilizar
 
@@ -31,13 +32,11 @@ O incluso un video donde expliques su uso:
 
 [Youtube](https://www.youtube.com/watch?v=T6UEX47mPeE)
 
-
 ## Requisitos
 
 Mi módulo requiere:
 
 - AzerothCore 
-
 
 ## Instalación
 
@@ -50,7 +49,6 @@ Mi módulo requiere:
 ## Editar la configuración del módulo (opcional)
 
 Si necesita cambiar la configuración del módulo, vaya a la carpeta de configuración de su servidor (donde está su `worldserver` o `worldserver.exe`), copie `mod_promotion.conf.dist` y edite ese nuevo archivo.
-
 
 ## Créditos
 
