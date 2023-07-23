@@ -24,7 +24,8 @@ class announce_module : public PlayerScript
 public:
     announce_module() : PlayerScript("announce_module") { }
 
-    void OnLogin(Player* player) override {
+    void OnLogin(Player* player) override
+    {
         if (sConfigMgr->GetOption<bool>("announce_module.enableHelloWorld", true))
         {
             ChatHandler(player->GetSession()).SendSysMessage("Hello World from Promotion-Module! - By Asmadeuxx");
@@ -484,97 +485,97 @@ public:
         uint32 pjts = fields[0].Get<uint32>();
 
         ClearGossipMenuFor(player);
+
         if (promotionEnable && ((int)pjts <= promotionCount))
         {
             if (action > GOSSIP_ACTION_INFO_DEF && action < 1020)
-                // Level
-                player->GiveLevel(sConfigMgr->GetOption<uint32>("LevelForPromotion", 80));
+                player->GiveLevel(sConfigMgr->GetOption<uint32>("LevelForPromotion", 80)); // Level
 
-        //Money 2,5k
-         MoneyReward(player);
+            //Money 2,5k
+            MoneyReward(player);
 
-         // Skill Max
-        player->UpdateSkillsToMaxSkillsForLevel();
+             // Skill Max
+            player->UpdateSkillsToMaxSkillsForLevel();
 
-        // Riding
-        player->learnSpell(SKILL_RIDING_75);
-        player->learnSpell(SKILL_RIDING_100);
-        player->learnSpell(SKILL_RIDING_FLYING);
-        player->learnSpell(SKILL_RIDING_ARTISING);
+            // Riding
+            player->learnSpell(SKILL_RIDING_75);
+            player->learnSpell(SKILL_RIDING_100);
+            player->learnSpell(SKILL_RIDING_FLYING);
+            player->learnSpell(SKILL_RIDING_ARTISING);
 
-        creature->Whisper("You Got Your Promotion!", LANG_UNIVERSAL, player);
+            creature->Whisper("You Got Your Promotion!", LANG_UNIVERSAL, player);
 
-        if (mountEnable)
-        {
-            player->learnSpell(sConfigMgr->GetOption<uint32>("mountPromotion", 42777)); //Swift Spectral Tiger
-        }
+            if (mountEnable)
+            {
+                player->learnSpell(sConfigMgr->GetOption<uint32>("mountPromotion", 42777)); //Swift Spectral Tiger
+            }
         
-        //Bags
-        if (bagEnable)
-        {
-            if (equippedbags)
+            //Bags
+            if (bagEnable)
             {
-                for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-                    if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
-                        player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
+                if (equippedbags)
+                {
+                    for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                        if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
+                            player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
 
-                for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-                    player->EquipNewItem(slot, (sConfigMgr->GetOption<uint32>("bagReward.Id", 14156)), true);
+                    for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                        player->EquipNewItem(slot, (sConfigMgr->GetOption<uint32>("bagReward.Id", 14156)), true);
+                }
+                else
+                {
+                    player->AddItem((sConfigMgr->GetOption<uint32>("bagReward.Id", 14156)), 4);
+                }
             }
-            else
+
+            switch (action)
             {
-                player->AddItem((sConfigMgr->GetOption<uint32>("bagReward.Id", 14156)), 4);
+                case 1001:
+                    WarriorPromotionDps(player);
+                    break;
+                case 1002: 
+                    WarriorPromotionTank(player);
+                    break;
+                case 1003:
+                    WarlockPromotionDps(player);
+                    break;
+                case 1004:
+                    DruidPromotionTank(player);
+                    break;
+                case 1005:
+                    DruidPromotionHeal(player);
+                    break;
+                case 1006:
+                    DruidPromotionCaster(player);
+                    break;
+                case 1007:
+                    HunterPromotion(player);
+                    break;
+                case 1008:
+                    MagePromotionDps(player);
+                    break;
+                case 1009:
+                    RoguePromotion(player);
+                    break;
+                case 1010:
+                    PriestPromotionHeal(player);
+                    break;
+                case 1011:
+                    PriestPromotionShadow(player);
+                    break;
+                case 1012:
+                    PaladinPromotionTank(player);
+                    break;
+                case 1013:
+                    PaladinPromotionHeal(player);
+                    break;
+                case 1014:
+                    PaladinPromotionDps(player);
+                    break;
+                default:
+                    break;
             }
-
         }
-
-        switch (action)
-        {
-        case 1001:
-            WarriorPromotionDps(player);
-            break;
-        case 1002: 
-            WarriorPromotionTank(player);
-            break;
-        case 1003:
-            WarlockPromotionDps(player);
-            break;
-        case 1004:
-            DruidPromotionTank(player);
-            break;
-        case 1005:
-            DruidPromotionHeal(player);
-            break;
-        case 1006:
-            DruidPromotionCaster(player);
-            break;
-        case 1007:
-            HunterPromotion(player);
-            break;
-        case 1008:
-            MagePromotionDps(player);
-            break;
-        case 1009:
-            RoguePromotion(player);
-            break;
-        case 1010:
-            PriestPromotionHeal(player);
-            break;
-        case 1011:
-            PriestPromotionShadow(player);
-            break;
-        case 1012:
-            PaladinPromotionTank(player);
-            break;
-        case 1013:
-            PaladinPromotionHeal(player);
-            break;
-        case 1014:
-            PaladinPromotionDps(player);
-            break;
-        }
-    }
-
         else
         {
             SendGossipMenuFor(player, 80000, creature);
