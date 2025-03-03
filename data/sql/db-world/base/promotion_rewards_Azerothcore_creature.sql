@@ -1,4 +1,4 @@
-SET @ENTRY:=100000;
+SET @ENTRY:=100042;
 SET @NAME:="AzerothCore";
 SET @SUBNAME:="Promotion";
 SET @GOSSIP:=62000;
